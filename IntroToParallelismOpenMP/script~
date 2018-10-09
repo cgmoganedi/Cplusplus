@@ -1,0 +1,15 @@
+	-Scope-
+By default, variables declared outside the parallel region and used within the parallel region are SHARED.
+
+This means:
+	a) within the parallel region, the variable will inherit its initial state from its state in the master thread just prior to the parallel region,
+	b) any state changes inside the parallel region are visible in all threads, and
+	c) after the parallel region, its value in the master thread will reflect the most recent write among all the threads.
+	
+The programmer should use thread synchronization when writing shared variables that are read in another thread.
+
+Alternatively, the programmer can mark an externally declared variable as being private in the parallel region using the “private” directive option. In C++, the programmer can achieve the same effect by declaring the variable inside the parallel region.
+
+Private variables are local to each thread, such that changes to the variable
+are only visible to the thread making the change and the variable state is
+destroyed when the thread is destroyed.

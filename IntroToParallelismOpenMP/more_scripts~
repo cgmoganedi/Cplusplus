@@ -1,0 +1,9 @@
+Other OpenMP directives
+Nested pragmas are also used when a section within a parallel block must be
+executed in a special way, such as when a section must be executed in
+sequential order among the threads (the ordered pragma), when a section
+must be executed only on the master thread (the master pragma), when a
+section must be executed atomically (the atomic pragma), when a section should only be executed in one thread (the single pragma), when a section
+should only be executed by the master (the master directive) or a critical
+section, which can only be executed by one thread at a time (the atomic
+pragma).
