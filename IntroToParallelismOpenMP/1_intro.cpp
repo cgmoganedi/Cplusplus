@@ -8,22 +8,20 @@ void heavy_computation()
 		// code to be executed in each thread
 	}
 	
-	#pragma omp parallel
-		
-		#pragma omp sections
+	#pragma omp parallel sections
+	{
+		#pragma omp section
 		{
-			#pragma omp section
-			{
-				// code executed in first thread
-				printf ("id = %d, \n", omp_get_thread_num());
-			}
-			
-			#pragma omp section
-			{
-				// code executed in second thread
-				printf ("id = %d, \n", omp_get_thread_num());
-			}
+			// code executed in first thread
+			printf ("id = %d, \n", omp_get_thread_num());
 		}
+
+		#pragma omp section
+		{
+			// code executed in second thread
+			printf ("id = %d, \n", omp_get_thread_num());
+		}
+	}
 	
 	int a = 1;
 	/*
