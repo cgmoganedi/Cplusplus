@@ -15,11 +15,13 @@ void heavy_computation()
 			#pragma omp section
 			{
 				// code executed in first thread
+				printf ("id = %d, \n", omp_get_thread_num());
 			}
 			
 			#pragma omp section
 			{
 				// code executed in second thread
+				printf ("id = %d, \n", omp_get_thread_num());
 			}
 		}
 	
