@@ -36,6 +36,7 @@ long double get_integral(double x_0, double x_n, long n)
 	long double delta = ( x_n - x_0) / n;
 	long double area = 0;
 	
+	//remove atomic and use #pragma parallel reduction(area, +)
 	#pragma parallel num_thread(4)
 	for(x = x_0; x <= x_n - delta; x += delta)
 	{
